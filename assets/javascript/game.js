@@ -39,7 +39,7 @@ var pointvals = [];
 				totalscore = 0;
 				$('.currentscore').html('Current POG Total:<br>' + 0);
 				goal = Math.floor(Math.random()*100+19);
-				$('.randonum').html('TARGET POG-SCORE: '+goal);
+				$('.randonum').html('TARGET POG-SCORE: <br>'+goal);
 				init();
 			} else if(totalscore > goal){
 				console.log('loser');
@@ -50,7 +50,7 @@ var pointvals = [];
 				totalscore = 0;
 				$('.currentscore').html('Current POG Total:<br>' + 0);
 				goal = Math.floor(Math.random()*100+19);
-				$('.randonum').html('TARGET POG-SCORE: '+goal);
+				$('.randonum').html('TARGET POG-SCORE: <br>'+goal);
 				init();
 			}
 		})
