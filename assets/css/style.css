@@ -46,10 +46,12 @@ h1{
 	margin-left: 12px;
 }
 .a{
-	padding-top: 25px;
-	padding-bottom: 10px;
+	float: left;
+	top: 22px;
+	padding-left: 23px;
+	padding-right: 23px;
 }
 .b{
-	padding: -1;
+	float: right;
 }
 
