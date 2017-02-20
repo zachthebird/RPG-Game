@@ -5,27 +5,28 @@
 
 	<title>RPG Game</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<h1 class="text-center">Pog Prowess!</h1>
 		</div>
-		<div class="row">
-			<div class="col-sm-6">
+		<div class="row nudge">
+			<div class="col-sm-6 box samewidth a b">
 				<p>You will be given a random number at the start of the game. There are four pogs. By clicking on a pog, you will add a certain number of pog-points to your score.</p>
 				<p>You win the game by matching your pog-points to the random number provided.</p>
 				<p>The number of pog-points alotted to each pog varies from pog to pog and is not displayed, you'll have to figure out how many pog-points each pog is worth by clicking the pog.</p>
 				<p>Each time you start a new game, the pog-points will vary.</p>
 				<p>Good luck, and may the strongest pogger win!</p>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6 samewidth b">
 				<div class="row text-center">
-					<div class="randonum">TARGET POG-SCORE: <br></div>
-					<div class="winsnum">WINS: </div>
-					<div class="lossnum">LOSSES: </div>
+					<div class="randonum box T">TARGET POG-SCORE: <br></div>
+					<div class="winsnum box T">WINS: <br></div>
+					<div class="lossnum box T">LOSSES: <br></div>
+					<div class="currentscore box T">Current POG Total:<br></div>
 				</div>
 			</div>
 		</div>
@@ -34,81 +35,12 @@
 			<!-- POG PICS GO HERE -->
 		</div>
 		</div>
-		<div class="row text-center">
-			<div class="currentscore">Current POG Total:<br></div>
-		</div>
-		<div class="row text-center">
+		
+		<div class="row text-center button">
 			<button class="text-center reset">Reset</button>
 		</div>
 	</div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script>
-	var pointvals = [];
-	var totalscore = 0;
-	var wins = 0;
-	var losses = 0;
-	var goal = Math.floor(Math.random()*100+19);
-	var pointValues = [];
-
-	function init() {
-		while(pointvals.length < 4){
-			var randomnum = Math.floor(Math.random()*12+1);				
-			if (pointvals.indexOf(randomnum) == -1) { 
-				pointvals.push( randomnum );
-			}
-		}
-		for (var i = 0; i < 4; i++) {
-			var img = $('<img class="col-sm-3">');
-			img.attr('src', "assets/images/pog" + (i+1) + ".png")
-			.attr('id', i+1)
-			.val(pointvals[i]);
-			$('.pogpics').append(img);
-		}
-		$('img').on('click', function(){
-			console.log(this.value);
-			totalscore += parseInt(this.value);
-			$('.currentscore').html('Current POG Total:<br>' + totalscore);
-			console.log(totalscore);
-			console.log(goal);
-			if(totalscore == goal){
-				console.log('winner');
-				wins++;
-				console.log(wins);
-				$('.winsnum').html('WINS: ' + wins);
-				alert("Perfect Score. You've Won!");
-				totalscore = 0;
-				$('.currentscore').html('Current POG Total:<br>' + 0);
-				goal = Math.floor(Math.random()*100+19);
-				$('.randonum').html('TARGET POG-SCORE: '+goal);
-				img.val(pointvalues[i])
-			} else if(totalscore > goal){
-				console.log('loser');
-				losses++;
-				console.log(losses);
-				$('.lossnum').html('LOSSES: ' + losses);
-				alert("Total Score is: " + totalscore + ". You've Lost!");
-				totalscore = 0;
-				$('.currentscore').html('Current POG Total:<br>' + 0);
-				goal = Math.floor(Math.random()*100+19);
-				$('.randonum').html('TARGET POG-SCORE: '+goal);
-			}
-		})
-	}
-	$(document).ready(function(){
-		init();
-		$('.reset').on('click', function(){
-			location.reload();
-		})
-	})
-	$('.randonum').append(goal);
-	$('.currentscore').append(totalscore);
-	$('.winsnum').html('WINS: ',wins)
-	$('.lossnum').html('LOSSES: ',losses)
-// *** 1) Reset Target Score on a Win or a Loss;
-// *** 2) Get Reset Button to Work;
-// *** 3) Styling
-
-
-</script>
+<script src="assets/javascript/game.js"></script>
 </body>
 </html>
