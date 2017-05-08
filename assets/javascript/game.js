@@ -15,7 +15,7 @@ function init() {
 	}
 	for (var i = 0; i < 4; i++) {
 		var img = $('<img class="col-sm-3">');
-		img.attr('src', "assets/images/pog" + (i + 1) + ".png")
+		img.attr('src', "/PogPage/assets/images/pog" + (i + 1) + ".png")
 			.attr('id', i + 1)
 			.val(pointvals[i]);
 		$('.pogpics').append(img);
