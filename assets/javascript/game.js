@@ -31,16 +31,7 @@ $(document).ready(function () {
 		console.log(totalscore);
 		console.log(goal);
 		if (totalscore == goal) {
-			console.log('winner');
-			wins++;
-			console.log(wins);
-			$('.winsnum').html('WINS: <br>' + wins);
-			alert("Perfect Score. You've Won!");
-			totalscore = 0;
-			$('.currentscore').html('Current POG Total:<br>' + 0);
-			goal = Math.floor(Math.random() * 100 + 19);
-			$('.randonum').html('TARGET POG-SCORE: <br>' + goal);
-			init();
+			win();
 		} else if (totalscore > goal) {
 			console.log('loser');
 			losses++;
@@ -65,3 +56,18 @@ $('.lossnum').html('LOSSES: <br>' + losses)
 // *** 1) Reset Target Score on a Win or a Loss;
 // *** 2) Get Reset Button to Work;
 // *** 3) Styling
+
+function win() {
+	console.log('winner');
+	wins++;
+	// logWinToDb();
+	console.log(wins);
+	$('.winsnum').html('WINS: <br>' + wins);
+	alert("Perfect Score. You've Won!");
+	totalscore = 0;
+	$('.currentscore').html('Current POG Total:<br>' + 0);
+	goal = Math.floor(Math.random() * 100 + 19);
+	$('.randonum').html('TARGET POG-SCORE: <br>' + goal);
+	init();
+	$.post('/api/wins', {currentUser: localStorage.getItem('currentUser')});
+}
